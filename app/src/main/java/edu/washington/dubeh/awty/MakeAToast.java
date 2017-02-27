@@ -1,6 +1,7 @@
 package edu.washington.dubeh.awty;
 
 import android.content.Context;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,9 +18,7 @@ public class MakeAToast implements Runnable{
 
     @Override
     public void run() {
-        String formattedNumber = "(" + number.substring(0, 3) + ") " +
-                number.substring(3, 6) + "-" + number.substring(6, 10);
-        Toast.makeText(context, formattedNumber + ": " + message,
-                    Toast.LENGTH_SHORT).show();
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(number, null, message, null, null);
     }
 }

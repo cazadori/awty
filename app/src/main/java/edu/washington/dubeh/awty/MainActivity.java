@@ -1,5 +1,6 @@
 package edu.washington.dubeh.awty;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -55,6 +56,7 @@ public class MainActivity extends Activity {
                     stopService(toastIntent);
                 } else {
                     String problem = "";
+
                     if(message.length() < 1 || number.length() < 1 || timeText.length() < 1) {
                         problem = "You must fill out all the fields";
                     } else if(number.length() != 10) {

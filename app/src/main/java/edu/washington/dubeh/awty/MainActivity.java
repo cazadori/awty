@@ -3,7 +3,9 @@ package edu.washington.dubeh.awty;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +20,7 @@ public class MainActivity extends Activity {
     EditText phoneNumber;
     EditText time;
     Intent toastIntent;
+    public static final int SMS_REQUEST_KEY_VALUE = 200;
     public static final String MAIN_MESSAGE = "Main Message";
     public static final String MAIN_NUMBER = "Main Number";
     public static final String MAIN_TIME = "Main Time";
@@ -33,6 +36,13 @@ public class MainActivity extends Activity {
         phoneNumber = (EditText) findViewById(R.id.phoneNumber);
         time = (EditText) findViewById(R.id.time);
         toastIntent = new Intent(MainActivity.this, ToastIntentService.class);
+        if(Build.VERSION.SDK_INT >= 23) {
+            if(getApplicationContext().checkCallingOrSelfPermission("android.permission.SEND_SMS")
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.SEND_SMS},
+                        SMS_REQUEST_KEY_VALUE);
+            }
+        }
 
         startStop.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {

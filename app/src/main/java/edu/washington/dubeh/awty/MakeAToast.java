@@ -6,12 +6,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class MakeAToast implements Runnable{
-    private final Context context;
     private String message;
     private String number;
 
-    MakeAToast(Context context, String message, String number) {
-        this.context = context;
+    MakeAToast(String message, String number) {
         this.message = message;
         this.number = number;
     }

@@ -33,7 +33,7 @@ public class ToastIntentService extends IntentService {
                 break;
             }
             try {
-                handler.post(new MakeAToast(this, message, number));
+                handler.post(new MakeAToast(message, number));
 
                 Thread.sleep(timeMilli);
             } catch(InterruptedException e) {

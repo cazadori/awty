@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "edu.washington.dubeh.awty"
         minSdkVersion 14
-        targetSdkVersion 14
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
